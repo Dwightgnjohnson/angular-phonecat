@@ -1,29 +1,37 @@
 <!doctype html>
-<html ng-app="phonecatApp">
+<html ng-app="phonecatApp" ng-controller="PhoneListCtrl">
 <head>
   <meta charset="utf-8">
-  <title>:0</title>
+  <title ng-bind-template="Google Phone Gallery: {{query}}">Google Phone Gallery</title>
+
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
   <script src="bower_components/angular/angular.js"></script>
   <script src="js/controllers.js"></script>
 </head>
-<body ng-controller="PhoneListCtrl">
-  <p>Hello {{name}}!</p>
+<body>
+  <br />
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <!--Sidebar content-->
 
-  <p>Total number of phones: {{phones.length}}</p>
-  <ul>
-    <li ng-repeat="phone in phones">
-      <span>{{phone.name}}</span>
-      <p>{{phone.snippet}}</p>
-    </li>
-  </ul>
+        Search: <input ng-model="query">
 
-  <table>
-  <tr><th>row number</th></tr>
-  <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]"><td>{{i + 3}}</td></tr>
-</table>
+      </div>
+      <div class="col-md-10">
+        <!--Body content-->
 
+        <ul class="phones">
+          <li ng-repeat="phone in phones | filter:query">
+            {{phone.name}}
+            <p>{{phone.snippet}}</p>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
 
   </body>
 </html>
