@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title ng-bind-template="Google Phone Gallery: {{query}}">Google Phone Gallery</title>
-
+  <!-- https://docs.angularjs.org/tutorial/ -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
   <script src="bower_components/angular/angular.js"></script>
@@ -25,6 +25,7 @@
     </li>
   </ul>
 
-  {{orderProp}}
-</body>
+  <p>OrderProp option value: {{orderProp}}</p>
+  <pre>{{phones | filter:query | orderBy:orderProp | json}}</pre>
+  </body>
 </html>
